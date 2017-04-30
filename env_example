@@ -1,0 +1,15 @@
+# Fill these in
+TWITTER_CONSUMER_KEY=''
+TWITTER_CONSUMER_SECRET=''
+TWITTER_ACCESS_TOKEN=''
+TWITTER_ACCESS_TOKEN_SECRET=''
+
+MASTODON_INSTANCE_URL=''
+MASTODON_LOGIN=''
+MASTODON_PASSWORD=''
+
+# Twitter handles in a comma separated list
+TWITTER_HANDLES_TO_TOOT=''
+
+# Hashtags to be appended to the Toots
+HASHTAGS=''
