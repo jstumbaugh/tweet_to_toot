@@ -15,7 +15,7 @@ module TweetToToot
     end
 
     def tweets_for(handle)
-      tweets = @client.user_timeline(handle, options_for(handle))
+      tweets = @client.user_timeline(handle, options_for(handle).merge(count: 1))
 
       save_most_recent(tweets, handle)
 
