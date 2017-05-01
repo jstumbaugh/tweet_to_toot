@@ -8,8 +8,8 @@ module TweetToToot
       @sleep_time = sleep_time
     end
 
-    def format_message(text)
-      "#{text} #{ENV["HASHTAGS"]}"
+    def format_message(handle, text)
+      "@#{handle}: #{text} #{ENV["HASHTAGS"]}"
     end
 
     # The main worker method
@@ -22,7 +22,7 @@ module TweetToToot
             @twitter.tweets_for(handle).each do |tweet|
               message = format_message(tweet.text)
 
-              @mastodon.toot(message)
+              @mastodon.toot(handle, message)
 
               puts "Tooted @#{handle}: #{message}"
             end
