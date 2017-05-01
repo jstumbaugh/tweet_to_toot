@@ -2,6 +2,7 @@ require "mastodon"
 require "twitter"
 require "oauth2"
 require "dotenv"
+require "yaml"
 
 Dotenv.load
 

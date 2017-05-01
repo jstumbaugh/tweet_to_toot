@@ -24,9 +24,7 @@ module TweetToToot
 
     def save_last_tweets
       File.open(saved_tweets_file, "w") do |f|
-        last_tweet.each do |handle, tweet_id|
-          f.puts "#{handle} #{tweet_id}"
-        end
+        f.write last_tweet.to_yaml
       end
     end
 
@@ -36,10 +34,7 @@ module TweetToToot
       tweets = {}
 
       if File.file?(saved_tweets_file)
-        File.readlines(saved_tweets_file).each do |line|
-          handle, id = line.split(" ")
-          tweets[handle] = id
-        end
+        tweets = YAML::load_file saved_tweets_file
       end
 
       tweets
