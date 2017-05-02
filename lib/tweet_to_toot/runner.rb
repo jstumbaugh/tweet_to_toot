@@ -20,9 +20,9 @@ module TweetToToot
 
           handles.each do |handle|
             @twitter.tweets_for(handle).each do |tweet|
-              message = format_message(tweet.text)
+              message = format_message(handle, tweet.text)
 
-              @mastodon.toot(handle, message)
+              @mastodon.toot(message)
 
               puts "Tooted @#{handle}: #{message}"
             end
