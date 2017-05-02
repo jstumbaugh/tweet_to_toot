@@ -1,16 +1,16 @@
 FROM ruby:2.2.4
 
-RUN mkdir /home/tweet_to_toot
+RUN mkdir /tweet_to_toot
 
-WORKDIR /home/tweet_to_toot
+WORKDIR /tweet_to_toot
 
-# link the example env
-RUN ln -s env.example .env
-
-ADD Gemfile /home/tweet_to_toot/Gemfile
-ADD Gemfile.lock /home/tweet_to_toot/Gemfile.lock
+ADD env_example /tweet_to_toot/.env
+ADD Gemfile /tweet_to_toot/Gemfile
+ADD Gemfile.lock /tweet_to_toot/Gemfile.lock
 
 # Install the dependencies
 RUN bundle install
 
-ADD . /home/tweet_to_toot
+ADD . /tweet_to_toot
+
+CMD bundle exec rake
