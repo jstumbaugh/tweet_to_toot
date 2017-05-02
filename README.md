@@ -28,15 +28,6 @@ Store these account handles in the `env.example` file.
 TWITTER_HANDLES_TO_TOOT='RubyInside, rubyflow'
 ```
 
-### 5. Run the task to toot tweets
-
-You can run the rake task `bundle exec rake` that will loop forever, or you can
-spin up a Docker image with:
-
-```
-docker build --tag "tweet_to_toot" .
-```
-
 ### Pro Tip: Add hashtags to tie all of your toots together
 
 Store your hashtags to add in the `env.example` file. These will be appended to
@@ -45,6 +36,16 @@ the end of the tweets and posted to Mastodon.
 ```env
 # Hashtags to be appended to the Toots
 HASHTAGS='#RubyDevNews #TweetToToot'
+```
+
+### 5. Run the task to toot tweets
+
+You can run the rake task `bundle exec rake` that will loop forever, or you can
+spin up a Docker image with:
+
+```
+docker build --tag "tweet_to_toot" .
+docker run -it -d --name tweet_to_toot_image tweet_to_toot
 ```
 
 ## Enjoy!
