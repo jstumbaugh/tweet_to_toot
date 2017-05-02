@@ -16,8 +16,6 @@ module TweetToToot
     def run
       begin
         loop do
-          sleep sleep_time
-
           handles.each do |handle|
             @twitter.tweets_for(handle).each do |tweet|
               message = format_message(handle, tweet.text)
@@ -27,6 +25,8 @@ module TweetToToot
               puts "Tooted @#{handle}: #{message}"
             end
           end
+
+          sleep sleep_time
         end
       rescue SystemExit, Interrupt
         # Persist the last tweets we tooted
