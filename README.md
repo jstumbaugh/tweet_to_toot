@@ -4,9 +4,10 @@ A tool for tooting tweets from your favorite accounts
 
 ## Follow us at [@rubydev@octodon.social](https://octodon.social/@rubydev)
 
-Currently, we are following [@RubyInside](https://twitter.com/RubyInside) and
-[@rubyflow](https://twitter.com/rubyflow) from Twitter, but are open to more
-useful Ruby Development News accounts! Open an issue to suggest a new account!
+Currently, we are only following [@RubyInside](https://twitter.com/RubyInside),
+[@rubyflow](https://twitter.com/rubyflow), and
+[@DriftingRuby](https://twitter.com/DriftingRuby) from Twitter, but are open to
+more useful Ruby Development News accounts! Open an issue to suggest new accounts!
 
 ## Steps to install
 
