@@ -40,12 +40,18 @@ HASHTAGS='#RubyDevNews #TweetToToot'
 
 ### 5. Run the task to toot tweets
 
-You can run the rake task `bundle exec rake` that will loop forever, or you can
-spin up a Docker image with:
+You can run the rake task
 
 ```
-docker build --tag "tweet_to_toot" .
-docker run -it -d --name tweet_to_toot_image tweet_to_toot
+bundle exec rake
 ```
+
+which will loop forever, or you can spin up a Docker image with:
+
+```
+make
+```
+
+which builds a docker image, starts it, and begins Tooting!
 
 ## Enjoy!
