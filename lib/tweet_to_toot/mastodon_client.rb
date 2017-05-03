@@ -9,7 +9,6 @@ module TweetToToot
     end
 
     def toot(message)
-      puts "Tooting: #{message}"
       @client.create_status(message)
     end
 
@@ -29,7 +28,7 @@ module TweetToToot
 
     # This will only be run the first time
     def get_mastodon_access_token
-      puts "Mastodon Access Token was not found. Creating a new one now..."
+      Logger.new(STDOUT).info "Mastodon Access Token was not found. Creating a new one now..."
       scopes = 'read write follow'
 
       client = Mastodon::REST::Client.new(base_url: @instance_url)

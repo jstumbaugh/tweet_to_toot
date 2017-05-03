@@ -1,15 +1,17 @@
 module TweetToToot
   class Runner
-    attr_accessor :handles, :sleep_time
+    attr_accessor :handles, :sleep_time, :logger
+
     def initialize(mastodon, twitter, handles = nil, sleep_time = 60)
       @mastodon   = mastodon
       @twitter    = twitter
       @handles    = ENV["TWITTER_HANDLES_TO_TOOT"].split(", ")
       @sleep_time = sleep_time
+      @logger     = Logger.new(STDOUT)
     end
 
     def format_message(handle, text)
-      "@#{handle}: #{text} #{ENV["HASHTAGS"]}"
+      "@#{handle}: #{text.gsub(/\n/, " ")}\n#{ENV["HASHTAGS"]}"
     end
 
     # The main worker method
@@ -22,15 +24,16 @@ module TweetToToot
 
               @mastodon.toot(message)
 
-              puts "Tooted @#{handle}: #{message}"
+              logger.info "Tooted: #{message.gsub(/\n/, " ")}"
             end
           end
 
           sleep sleep_time
         end
-      rescue SystemExit, Interrupt
+      rescue Exception
         # Persist the last tweets we tooted
         @twitter.save_last_tweets
+        logger.info "Interrupted, saving last tweets..."
       end
     end
   end
