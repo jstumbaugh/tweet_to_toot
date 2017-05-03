@@ -1,7 +1,12 @@
 require 'dotenv/tasks'
 require_relative './lib/tweet_to_toot'
 
-task :default => [:run]
+task :default => [:authorize, :run]
+
+task :authorize do
+  puts "Authorizing Application with Mastodon"
+  TweetToToot::MastodonClient.new(ENV["MASTODON_INSTANCE_URL"])
+end
 
 task run: :dotenv do
   mastodon = TweetToToot::MastodonClient.new(ENV["MASTODON_INSTANCE_URL"])
