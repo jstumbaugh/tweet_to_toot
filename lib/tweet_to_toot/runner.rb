@@ -2,7 +2,7 @@ module TweetToToot
   class Runner
     attr_accessor :handles, :sleep_time, :logger
 
-    def initialize(mastodon, twitter, handles = nil, sleep_time = 60)
+    def initialize(mastodon, twitter, handles = nil, sleep_time = 3600)
       @mastodon   = mastodon
       @twitter    = twitter
       @handles    = ENV["TWITTER_HANDLES_TO_TOOT"].split(", ")
